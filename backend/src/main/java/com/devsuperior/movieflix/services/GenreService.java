@@ -5,6 +5,7 @@ import com.devsuperior.movieflix.dto.GenreDTO;
 import com.devsuperior.movieflix.entities.Genre;
 import com.devsuperior.movieflix.services.exceptions.DatabaseException;
 import com.devsuperior.movieflix.services.exceptions.ResourceNotFoundException;
+import com.devsuperior.movieflix.services.iface.IGenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -17,17 +18,19 @@ import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 
 @Service
-public class GenreService {
+public class GenreService implements IGenreService {
 
     @Autowired
     private GenreRepository repository;
 
+    @Override
     @Transactional(readOnly = true)
     public Page<GenreDTO> findAllPaged(PageRequest pageRequest){
         Page<Genre> list = repository.findAll(pageRequest);
         return  list.map(GenreDTO::new);
     }
 
+    @Override
     @Transactional(readOnly = true)
     public GenreDTO findById(Long id){
         Optional<Genre> obj = repository.findById(id);
@@ -35,6 +38,7 @@ public class GenreService {
         return new GenreDTO(entity);
     }
 
+    @Override
     @Transactional
     public GenreDTO insert(GenreDTO dto){
         Genre entity = new Genre();
@@ -43,6 +47,7 @@ public class GenreService {
         return new GenreDTO(entity);
     }
 
+    @Override
     @Transactional
     public GenreDTO update(Long id, GenreDTO dto){
         try {
@@ -55,6 +60,7 @@ public class GenreService {
         }
     }
 
+    @Override
     public void delete(Long id){
         try {
             repository.deleteById(id);

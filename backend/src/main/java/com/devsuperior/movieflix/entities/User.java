@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -28,12 +27,6 @@ public class User implements UserDetails, Serializable {
     @Column(unique = true)
     private String email;
     private String password;
-
-    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE", name = "created_at")
-    private LocalDate createdAt;
-
-    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE", name = "updated_at")
-    private LocalDate updatedAt;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="user_role",

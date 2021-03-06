@@ -1,20 +1,18 @@
 package com.devsuperior.movieflix.services.iface;
 
-import com.devsuperior.movieflix.dto.UserDTO;
-import com.devsuperior.movieflix.dto.UserInsertDTO;
-import com.devsuperior.movieflix.dto.UserUpdateDTO;
+import com.devsuperior.movieflix.dto.GenreDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
-public interface IUserService {
+public interface IGenreService {
 
-    Page<UserDTO> findAllPaged(PageRequest pageRequest);
+    Page<GenreDTO> findAllPaged(PageRequest pageRequest);
 
-    UserDTO findById(Long id);
+    GenreDTO findById(Long id);
 
-    UserDTO insert(UserInsertDTO dto);
+    GenreDTO insert(GenreDTO dto);
 
-    UserDTO update(Long id, UserUpdateDTO dto);
+    GenreDTO update(Long id, GenreDTO dto);
 
     void delete(Long id);
 }

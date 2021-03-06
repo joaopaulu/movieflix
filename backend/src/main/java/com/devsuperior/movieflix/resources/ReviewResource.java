@@ -1,7 +1,7 @@
 package com.devsuperior.movieflix.resources;
 
-import com.devsuperior.movieflix.dto.MovieDTO;
-import com.devsuperior.movieflix.services.MovieService;
+import com.devsuperior.movieflix.dto.ReviewDTO;
+import com.devsuperior.movieflix.services.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,14 +13,14 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 
 @RestController
-@RequestMapping(value = "/movies")
-public class MovieResource {
+@RequestMapping(value = "/reviews")
+public class ReviewResource {
 
     @Autowired
-    private MovieService service;
+    private ReviewService service;
 
     @GetMapping
-    public ResponseEntity<Page<MovieDTO>> findAll(
+    public ResponseEntity<Page<ReviewDTO>> findAll(
             @RequestParam(value = "page", defaultValue = "0") Integer page,
             @RequestParam(value = "linesPerPage", defaultValue = "10") Integer linesPerPage,
             @RequestParam(value = "direction", defaultValue = "ASC") String direction,
@@ -28,18 +28,18 @@ public class MovieResource {
 
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Sort.Direction.valueOf(direction), orderBy);
 
-        Page<MovieDTO> list = service.findAllPaged(pageRequest);
+        Page<ReviewDTO> list = service.findAllPaged(pageRequest);
         return ResponseEntity.ok().body(list);
     }
 
     @GetMapping(value = "{id}")
-    public ResponseEntity<MovieDTO> findById(@PathVariable Long id){
-        MovieDTO dto = service.findById(id);
+    public ResponseEntity<ReviewDTO> findById(@PathVariable Long id){
+        ReviewDTO dto = service.findById(id);
         return ResponseEntity.ok().body(dto);
     }
 
     @PostMapping
-    public ResponseEntity<MovieDTO> insert(@RequestBody MovieDTO dto){
+    public ResponseEntity<ReviewDTO> insert(@RequestBody ReviewDTO dto){
         dto = service.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(dto.getId()).toUri();
@@ -47,13 +47,13 @@ public class MovieResource {
     }
 
     @PutMapping(value = "{id}")
-    public ResponseEntity<MovieDTO> update(@PathVariable Long id, @RequestBody MovieDTO dto){
+    public ResponseEntity<ReviewDTO> update(@PathVariable Long id, @RequestBody ReviewDTO dto){
         dto = service.update(id, dto);
         return ResponseEntity.ok().body(dto);
     }
 
     @DeleteMapping(value = "{id}")
-    public ResponseEntity<MovieDTO> delete(@PathVariable Long id){
+    public ResponseEntity<ReviewDTO> delete(@PathVariable Long id){
         service.delete(id);
         return ResponseEntity.noContent().build();
     }

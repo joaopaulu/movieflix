@@ -1,18 +1,18 @@
 package com.devsuperior.movieflix.services.iface;
 
-import com.devsuperior.movieflix.dto.GenreDTO;
+import com.devsuperior.movieflix.dto.MovieDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
-public interface IGenreService {
+public interface IMovieService {
 
-    Page<GenreDTO> findAllPaged(PageRequest pageRequest);
+    Page<MovieDTO> findAllPaged(PageRequest pageRequest);
 
-    GenreDTO findById(Long id);
+    MovieDTO findById(Long id);
 
-    GenreDTO insert(GenreDTO dto);
+    MovieDTO insert(MovieDTO dto);
 
-    GenreDTO update(Long id, GenreDTO dto);
+    MovieDTO update(Long id, MovieDTO dto);
 
     void delete(Long id);
 }
