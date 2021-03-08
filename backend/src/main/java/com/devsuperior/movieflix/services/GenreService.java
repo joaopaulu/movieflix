@@ -1,36 +1,35 @@
 package com.devsuperior.movieflix.services;
 
-import com.devsuperior.movieflix.repositories.GenreRepository;
 import com.devsuperior.movieflix.dto.GenreDTO;
 import com.devsuperior.movieflix.entities.Genre;
+import com.devsuperior.movieflix.repositories.GenreRepository;
 import com.devsuperior.movieflix.services.exceptions.DatabaseException;
 import com.devsuperior.movieflix.services.exceptions.ResourceNotFoundException;
-import com.devsuperior.movieflix.services.iface.IGenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
-public class GenreService implements IGenreService {
+public class GenreService  {
 
     @Autowired
     private GenreRepository repository;
 
-    @Override
+
     @Transactional(readOnly = true)
-    public Page<GenreDTO> findAllPaged(PageRequest pageRequest){
-        Page<Genre> list = repository.findAll(pageRequest);
-        return  list.map(GenreDTO::new);
+    public List<GenreDTO> findAll(){
+        List<Genre> list = repository.findAll();
+        return list.stream().map(GenreDTO::new).collect(Collectors.toList());
     }
 
-    @Override
+
     @Transactional(readOnly = true)
     public GenreDTO findById(Long id){
         Optional<Genre> obj = repository.findById(id);
@@ -38,7 +37,6 @@ public class GenreService implements IGenreService {
         return new GenreDTO(entity);
     }
 
-    @Override
     @Transactional
     public GenreDTO insert(GenreDTO dto){
         Genre entity = new Genre();
@@ -47,7 +45,6 @@ public class GenreService implements IGenreService {
         return new GenreDTO(entity);
     }
 
-    @Override
     @Transactional
     public GenreDTO update(Long id, GenreDTO dto){
         try {
@@ -60,7 +57,6 @@ public class GenreService implements IGenreService {
         }
     }
 
-    @Override
     public void delete(Long id){
         try {
             repository.deleteById(id);

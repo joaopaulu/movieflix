@@ -1,6 +1,5 @@
 package com.devsuperior.movieflix.services;
 
-import com.devsuperior.movieflix.dto.GenreDTO;
 import com.devsuperior.movieflix.dto.MovieDTO;
 import com.devsuperior.movieflix.entities.Genre;
 import com.devsuperior.movieflix.entities.Movie;
@@ -8,7 +7,6 @@ import com.devsuperior.movieflix.repositories.GenreRepository;
 import com.devsuperior.movieflix.repositories.MovieRepository;
 import com.devsuperior.movieflix.services.exceptions.DatabaseException;
 import com.devsuperior.movieflix.services.exceptions.ResourceNotFoundException;
-import com.devsuperior.movieflix.services.iface.IMovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -21,7 +19,7 @@ import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 
 @Service
-public class MovieService implements IMovieService {
+public class MovieService {
 
     @Autowired
     private MovieRepository repository;
@@ -29,14 +27,12 @@ public class MovieService implements IMovieService {
     @Autowired
     private GenreRepository genreRepository;
 
-    @Override
-    @Transactional(readOnly = true)
+     @Transactional(readOnly = true)
     public Page<MovieDTO> findAllPaged(PageRequest pageRequest){
         Page<Movie> list = repository.findAll(pageRequest);
         return  list.map(MovieDTO::new);
     }
 
-    @Override
     @Transactional(readOnly = true)
     public MovieDTO findById(Long id){
         Optional<Movie> obj = repository.findById(id);
@@ -44,7 +40,6 @@ public class MovieService implements IMovieService {
         return new MovieDTO(entity);
     }
 
-    @Override
     @Transactional
     public MovieDTO insert(MovieDTO dto){
         Movie entity = new Movie();
@@ -53,7 +48,6 @@ public class MovieService implements IMovieService {
         return new MovieDTO(entity);
     }
 
-    @Override
     @Transactional
     public MovieDTO update(Long id, MovieDTO dto){
         try {
@@ -66,7 +60,6 @@ public class MovieService implements IMovieService {
         }
     }
 
-    @Override
     public void delete(Long id){
         try {
             repository.deleteById(id);

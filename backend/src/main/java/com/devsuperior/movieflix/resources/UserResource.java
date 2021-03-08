@@ -3,7 +3,7 @@ package com.devsuperior.movieflix.resources;
 import com.devsuperior.movieflix.dto.UserDTO;
 import com.devsuperior.movieflix.dto.UserInsertDTO;
 import com.devsuperior.movieflix.dto.UserUpdateDTO;
-import com.devsuperior.movieflix.services.iface.IUserService;
+import com.devsuperior.movieflix.services.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ import java.net.URI;
 public class UserResource {
 
     @Autowired
-    private IUserService service;
+    private UserService service;
 
     @GetMapping
     @ApiOperation("Busca todos os usuários")

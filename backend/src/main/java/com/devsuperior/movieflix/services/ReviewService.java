@@ -5,7 +5,6 @@ import com.devsuperior.movieflix.entities.Review;
 import com.devsuperior.movieflix.repositories.ReviewRepository;
 import com.devsuperior.movieflix.services.exceptions.DatabaseException;
 import com.devsuperior.movieflix.services.exceptions.ResourceNotFoundException;
-import com.devsuperior.movieflix.services.iface.IReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -18,19 +17,18 @@ import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 
 @Service
-public class ReviewService implements IReviewService {
+public class ReviewService {
 
     @Autowired
     private ReviewRepository repository;
 
-    @Override
     @Transactional(readOnly = true)
     public Page<ReviewDTO> findAllPaged(PageRequest pageRequest){
         Page<Review> list = repository.findAll(pageRequest);
         return  list.map(ReviewDTO::new);
     }
 
-    @Override
+
     @Transactional(readOnly = true)
     public ReviewDTO findById(Long id){
         Optional<Review> obj = repository.findById(id);
@@ -38,7 +36,7 @@ public class ReviewService implements IReviewService {
         return new ReviewDTO(entity);
     }
 
-    @Override
+
     @Transactional
     public ReviewDTO insert(ReviewDTO dto){
         Review entity = new Review();
@@ -47,7 +45,7 @@ public class ReviewService implements IReviewService {
         return new ReviewDTO(entity);
     }
 
-    @Override
+
     @Transactional
     public ReviewDTO update(Long id, ReviewDTO dto){
         try {
@@ -60,7 +58,7 @@ public class ReviewService implements IReviewService {
         }
     }
 
-    @Override
+
     public void delete(Long id){
         try {
             repository.deleteById(id);
