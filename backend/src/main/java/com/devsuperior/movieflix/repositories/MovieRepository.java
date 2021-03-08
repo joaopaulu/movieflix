@@ -10,11 +10,10 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface MovieRepository extends JpaRepository<Movie, Long> {
-  /*  @Query("SELECT obj FROM movie obj WHERE :genre IS NULL OR obj.genre = :genre")
+    @Query("SELECT obj FROM Movie obj WHERE:genre IS NULL OR :genre = obj.genre")
     Page<Movie> find(Genre genre, Pageable pageable);
 
-    Page<Movie> findGenreOrderByTitleAsc(Genre genre, Pageable pageable);
+    @Query("SELECT obj FROM Movie obj WHERE :genre IS NULL OR obj.genre = :genre ORDER BY obj.title ASC")
+    Page<Movie> searchAll(Genre genre, Pageable pageable);
 
-    @Query("SELECT obj FROM movie obj JOIN FETCH obj.genre WHERE obj IN :genre")
-    List<Movie> findMoviesAndGenres(List<Movie> movies);*/
 }

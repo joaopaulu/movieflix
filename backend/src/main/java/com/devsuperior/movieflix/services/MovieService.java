@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -27,9 +29,10 @@ public class MovieService {
     @Autowired
     private GenreRepository genreRepository;
 
-     @Transactional(readOnly = true)
-    public Page<MovieDTO> findAllPaged(PageRequest pageRequest){
-        Page<Movie> list = repository.findAll(pageRequest);
+    @Transactional(readOnly = true)
+    public Page<MovieDTO> find(Long genreId, PageRequest pageRequest){
+        Genre genre = (genreId == 0) ? null : genreRepository.getOne(genreId);
+        Page<Movie> list = repository.searchAll(genre, pageRequest);
         return  list.map(MovieDTO::new);
     }
 
@@ -76,7 +79,6 @@ public class MovieService {
         entity.setYear(dto.getYear());
         entity.setImgUrl(dto.getImgUrl());
         entity.setSynopsis(dto.getSynopsis());
-        entity.setGenre((Genre) dto.getGenres());
 
     }
 }

@@ -3,9 +3,9 @@ package com.devsuperior.movieflix.dto;
 import com.devsuperior.movieflix.entities.Movie;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class MovieDTO implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -16,20 +16,24 @@ public class MovieDTO implements Serializable {
     private Integer year;
     private String imgUrl;
     private String synopsis;
+    private Long genreId;
 
-    Set<GenreDTO> genres = new HashSet<>();
+    private List<ReviewDTO> reviews = new ArrayList<>();
+
+
 
     public MovieDTO() {
     }
 
-    public MovieDTO(Long id, String title, String subTitle, Integer year, String imgUrl, String synopsis, Set<GenreDTO> genres) {
+    public MovieDTO(Long id, String title, String subTitle, Integer year, String imgUrl, String synopsis, Long genreId, List<ReviewDTO> reviews) {
         this.id = id;
         this.title = title;
         this.subTitle = subTitle;
         this.year = year;
         this.imgUrl = imgUrl;
         this.synopsis = synopsis;
-        this.genres = genres;
+        this.genreId = genreId;
+        this.reviews = reviews;
     }
 
     public MovieDTO(Movie movie) {
@@ -39,6 +43,8 @@ public class MovieDTO implements Serializable {
         year = movie.getYear();
         imgUrl = movie.getImgUrl();
         synopsis = movie.getSynopsis();
+        genreId = movie.getGenres().getId();
+        reviews = movie.getReviews().stream().map(ReviewDTO::new).collect(Collectors.toList());
 
     }
 
@@ -90,11 +96,19 @@ public class MovieDTO implements Serializable {
         this.synopsis = synopsis;
     }
 
-    public Set<GenreDTO> getGenres() {
-        return genres;
+    public Long getGenreId() {
+        return genreId;
     }
 
-    public void setGenres(Set<GenreDTO> genres) {
-        this.genres = genres;
+    public void setGenreId(Long genreId) {
+        this.genreId = genreId;
+    }
+
+    public List<ReviewDTO> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<ReviewDTO> reviews) {
+        this.reviews = reviews;
     }
 }
