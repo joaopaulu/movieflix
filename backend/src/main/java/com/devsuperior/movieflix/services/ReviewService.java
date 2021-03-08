@@ -1,7 +1,10 @@
 package com.devsuperior.movieflix.services;
 
 import com.devsuperior.movieflix.dto.ReviewDTO;
+import com.devsuperior.movieflix.entities.Movie;
 import com.devsuperior.movieflix.entities.Review;
+import com.devsuperior.movieflix.entities.User;
+import com.devsuperior.movieflix.repositories.MovieRepository;
 import com.devsuperior.movieflix.repositories.ReviewRepository;
 import com.devsuperior.movieflix.services.exceptions.DatabaseException;
 import com.devsuperior.movieflix.services.exceptions.ResourceNotFoundException;
@@ -21,6 +24,12 @@ public class ReviewService {
 
     @Autowired
     private ReviewRepository repository;
+
+    @Autowired
+    private MovieRepository movieRepository;
+
+    @Autowired
+    private AuthService authService;
 
     @Transactional(readOnly = true)
     public Page<ReviewDTO> findAllPaged(PageRequest pageRequest){
@@ -70,6 +79,12 @@ public class ReviewService {
     }
 
     private void copyDtoEntity(ReviewDTO dto, Review entity) {
+        Movie movie = movieRepository.getOne(dto.getMovieId());
+        User user = authService.authenticated();
+
+        authService.validateSelfOrAdmin(user.getId());
         entity.setText(dto.getText());
+        entity.setMovie(movie);
+        entity.setUser(user);
     }
 }

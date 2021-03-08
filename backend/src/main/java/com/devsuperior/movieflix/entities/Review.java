@@ -1,6 +1,7 @@
 package com.devsuperior.movieflix.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -13,6 +14,7 @@ public class Review implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message = "Campo Obrigatório")
     private String text;
 
     @ManyToOne(fetch=FetchType.LAZY)

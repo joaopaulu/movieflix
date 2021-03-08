@@ -1,5 +1,6 @@
 package com.devsuperior.movieflix.services;
 
+import com.devsuperior.movieflix.dto.GenreDTO;
 import com.devsuperior.movieflix.dto.MovieDTO;
 import com.devsuperior.movieflix.entities.Genre;
 import com.devsuperior.movieflix.entities.Movie;
@@ -79,6 +80,8 @@ public class MovieService {
         entity.setYear(dto.getYear());
         entity.setImgUrl(dto.getImgUrl());
         entity.setSynopsis(dto.getSynopsis());
-
+        var genre = new Genre();
+        genre.setId(dto.getGenreId());
+        entity.setGenre(genre);
     }
 }

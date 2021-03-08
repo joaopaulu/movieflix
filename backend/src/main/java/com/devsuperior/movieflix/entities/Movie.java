@@ -2,9 +2,7 @@ package com.devsuperior.movieflix.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name="movies")
@@ -14,15 +12,10 @@ public class Movie implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String title;
-
     private String subTitle;
-
     private Integer year;
-
     private String imgUrl;
-
     @Column(columnDefinition="TEXT")
     private String synopsis;
 
@@ -30,11 +23,8 @@ public class Movie implements Serializable {
     @JoinColumn(name = "genre_id")
     private Genre genre;
 
-    @ManyToMany
-    @JoinTable(name="reviews",
-            joinColumns = @JoinColumn(name= "id"),
-            inverseJoinColumns = @JoinColumn(name = "movie_id"))
-    Set<Review> reviews = new HashSet<>();
+    @OneToMany(mappedBy = "movie")
+    private List<Review> reviews = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -84,7 +74,7 @@ public class Movie implements Serializable {
         this.synopsis = synopsis;
     }
 
-    public Genre getGenres() {
+    public Genre getGenre() {
         return genre;
     }
 
@@ -92,13 +82,11 @@ public class Movie implements Serializable {
         this.genre = genre;
     }
 
-    public Set<Review> getReviews() {
+    public List<Review> getReviews() {
         return reviews;
     }
 
-    public void setReviews(Set<Review> reviews) {
-        this.reviews = reviews;
-    }
+
 
     @Override
     public boolean equals(Object o) {
