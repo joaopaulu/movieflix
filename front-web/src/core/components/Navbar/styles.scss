@@ -1,0 +1,36 @@
+.nav-logo-text{
+  width: 30%;
+  color: #000;
+  font-size: 24px;
+  line-height: 33px;
+  font-weight: bold;
+
+  &:hover{
+    color:#000;
+  }
+}
+
+.main-nav{
+  height: 70px;
+  padding: 17px 40px 0 40px;
+}
+
+
+
+@media(max-width:768px){
+  .menu-container{
+    justify-content: flex-end;
+  }
+}
+
+@media(max-width:576px){
+  .main-nav{
+    width: 100% !important;
+    justify-content: space-between;
+  }
+
+  .nav-logo-text{
+    width: 50%;
+    margin-left: 15px;
+  }  
+}
