@@ -22,13 +22,11 @@ public class GenreService  {
     @Autowired
     private GenreRepository repository;
 
-
     @Transactional(readOnly = true)
     public List<GenreDTO> findAll(){
         List<Genre> list = repository.findAll();
         return list.stream().map(GenreDTO::new).collect(Collectors.toList());
     }
-
 
     @Transactional(readOnly = true)
     public GenreDTO findById(Long id){

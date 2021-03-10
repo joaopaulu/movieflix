@@ -37,14 +37,12 @@ public class ReviewService {
         return  list.map(ReviewDTO::new);
     }
 
-
     @Transactional(readOnly = true)
     public ReviewDTO findById(Long id){
         Optional<Review> obj = repository.findById(id);
         Review entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not Found"));
         return new ReviewDTO(entity);
     }
-
 
     @Transactional
     public ReviewDTO insert(ReviewDTO dto){
@@ -53,7 +51,6 @@ public class ReviewService {
         entity = repository.save(entity);
         return new ReviewDTO(entity);
     }
-
 
     @Transactional
     public ReviewDTO update(Long id, ReviewDTO dto){
@@ -66,7 +63,6 @@ public class ReviewService {
             throw new ResourceNotFoundException("Id not found " + id);
         }
     }
-
 
     public void delete(Long id){
         try {
