@@ -23,7 +23,7 @@ const PrivateRoute = ({ children, path, allowedRoutes }: Props) => {
             />
           );
         } else if (isAuthenticated() && !isAllowesByRole(allowedRoutes)) {
-          return <Redirect to={{ pathname: '/admin' }} />;
+          return <Redirect to={{ pathname: '/movies' }} />;
         }
         return children;
       }}
