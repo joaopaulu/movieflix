@@ -1,7 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MoviesResponse } from 'core/types/Movies';
-import { Genre } from 'core/types/Genre';
+import { MoviesResponse, Genre } from 'core/types/Movies';
 import { makePrivateRequest } from 'core/utils/request';
 import MovieCard from './components/MovieCard';
 import MovieCardLoader from './components/Loaders/MovieCardLoader';
@@ -18,8 +17,10 @@ const Catalog = () => {
   const getMovies = useCallback(() => {
     const params = {
       page: activePage,
-      linesPerPage: 12,
-      GenreId: genre?.id,
+      linesPerPage: 8,
+      direction: 'ASC',
+      orderBy: 'title',
+      genreId: genre?.id,
     };
     setIsLoading(true);
     makePrivateRequest({ url: '/movies', params })
@@ -39,7 +40,7 @@ const Catalog = () => {
   return (
     <div className="catalog-container">
       <div className="filter-container">
-        <MovieFilters genre={genre} handleChangeGenres={handleChangeGenre} />
+        <MovieFilters genre={genre} handleChangeGenre={handleChangeGenre} />
       </div>
       <div className="catalog-movies">
         {isLoading ? (

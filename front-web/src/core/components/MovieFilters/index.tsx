@@ -5,12 +5,11 @@ import Select from 'react-select';
 import './styles.scss';
 
 type Props = {
-  name?: string;
   genre?: Genre;
-  handleChangeGenres: (genre: Genre) => void;
+  handleChangeGenre: (genre: Genre) => void;
 };
 
-const MovieFilters = ({ handleChangeGenres, genre }: Props) => {
+const MovieFilters = ({ handleChangeGenre, genre }: Props) => {
   const [isLoadingGenres, setIsLoadingGenres] = useState(false);
   const [genres, setGenres] = useState<Genre[]>([]);
 
@@ -35,7 +34,7 @@ const MovieFilters = ({ handleChangeGenres, genre }: Props) => {
         classNamePrefix="movie-genres-select"
         placeholder="Generos"
         inputId="genres"
-        onChange={value => handleChangeGenres(value as Genre)}
+        onChange={value => handleChangeGenre(value as Genre)}
         isClearable
       />
     </div>

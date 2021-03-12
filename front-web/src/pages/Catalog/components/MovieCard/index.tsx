@@ -6,10 +6,12 @@ type Props = {
 };
 
 const MovieCard = ({ movie }: Props) => (
-  <div className="card-base border-radius-10 product-card">
-    <img src={movie.imgUrl} alt={movie.title} className="product-card-image" />
-    <div className="product-info">
-      <h6 className="product-name">{movie.title}</h6>
+  <div className="movie-card">
+    <img src={movie.imgUrl} alt={movie.title} className="movie-card-image" />
+    <div className="movie-info">
+      <h4 className="catalog-title">{movie.title}</h4>
+      <h6 className="catalog-year">{movie.year}</h6>
+      <span className="catalog-subtitle">{movie.subTitle}</span>
     </div>
   </div>
 );
