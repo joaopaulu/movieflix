@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MoviesResponse, Genre } from 'core/types/Movies';
+import { MoviesResponse, Genre } from 'core/types/Movie';
 import { makePrivateRequest } from 'core/utils/request';
 import MovieCard from './components/MovieCard';
 import MovieCardLoader from './components/Loaders/MovieCardLoader';

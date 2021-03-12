@@ -1,8 +1,8 @@
-import { Movies } from 'core/types/Movies';
+import { Movie } from 'core/types/Movie';
 import './styles.scss';
 
 type Props = {
-  movie: Movies;
+  movie: Movie;
 };
 
 const MovieCard = ({ movie }: Props) => (

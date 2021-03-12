@@ -1,9 +1,9 @@
 export type MoviesResponse = {
-  content: Movies[];
+  content: Movie[];
   totalPages: number;
 };
 
-export type Movies = {
+export type Movie = {
   id: number;
   title: string;
   subTitle: string;

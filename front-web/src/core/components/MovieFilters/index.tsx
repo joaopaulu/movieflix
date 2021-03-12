@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { makePrivateRequest } from 'core/utils/request';
-import { Genre } from 'core/types/Movies';
+import { Genre } from 'core/types/Movie';
 import Select from 'react-select';
 import './styles.scss';
 
