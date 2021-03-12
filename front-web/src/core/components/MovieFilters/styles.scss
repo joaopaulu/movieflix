@@ -1,52 +1,43 @@
-.product-filters-container{
-  width: 70%;
-  padding: 10px 20px;
+.filter-container{
+  width: 100%;
+  background: #6C6C6C;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.input-search {
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid #E1E1E1;
-  flex: 1;
-
-  input{
-    border: none;
-
-    &::placeholder{
-      color: #9E9E9E;
-    }
-
-    &:focus{
-     box-shadow: none;
-    }
-  }
+  height: 60px;
+  padding: 5px 15px 5px 15px;
+  color: #FFF;
 }
 
 .filter-select-container{
-  flex: 1;
-  margin-left: 50px;
-  margin-right: 50px;
 
-  .product-categories-select__control{
-    height: 30px;
-    border: none;
-    border-radius: 0;
-    border-bottom: 1px solid #E1E1E1;
+  width: 250px;
+  
+
+  .movie-genres-select__control{
+    height: 50px;    
+    border-radius: 10px;
+    border: 1px solid #FFF;
+    background-color: #6C6C6C;
   }
   
-  .product-categories-select__indicator-separator{
+  .movie-genres-select__indicator-separator{
     display: none;
   }
   
-  .product-categories-select__placeholder {
-    color: #9E9E9E;
+  .movie-genres-select__placeholder {
+    color: #FFF;
   }
 
-  .product-categories-select__focus {
+  .movie-genres-select__focus {
     box-shadow: none;
+  }
+
+  .movie-genres-select__single-value {
+    color: #FFF;
+  }
+
+  .movie-genres-select__menu {
+    background-color: #6C6C6C;
   }
 }
 

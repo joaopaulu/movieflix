@@ -1,5 +1,3 @@
-import { Genres } from './Genres';
-
 export type MoviesResponse = {
   content: Movies[];
   totalPages: number;
@@ -12,5 +10,10 @@ export type Movies = {
   year: number;
   imgUrl: string;
   synopsis: string;
-  genres: Genres[];
+  genres: Genre[];
+};
+
+export type Genre = {
+  id: number;
+  name: string;
 };
