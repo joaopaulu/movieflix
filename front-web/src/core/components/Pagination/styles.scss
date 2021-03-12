@@ -12,7 +12,7 @@
 .pagination-item{
   height: 40px;
   width: 40px;
-  background:#E1E1E1;
+  background:#6C6C6C;
   border-radius: 50%;
   font-weight: bold;
   font-size: 18px;
@@ -26,7 +26,7 @@
   margin-right: 10px;
 
   &.active {
-    background: #407BFF;
+    background: #FFC700;
   }
 
   &:hover{
@@ -44,11 +44,11 @@
 }
 .page-active{
   cursor: pointer;
-  color:#407BFF;
+  color:#FFC700;
 }
 
 .page-inactive{  
-  color: #E1E1E1;
+  color: #6C6C6C;
   pointer-events: none;
 }
 

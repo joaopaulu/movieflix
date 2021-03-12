@@ -17,7 +17,7 @@ const Catalog = () => {
   const getMovies = useCallback(() => {
     const params = {
       page: activePage,
-      linesPerPage: 8,
+      linesPerPage: 12,
       direction: 'ASC',
       orderBy: 'title',
       genreId: genre?.id,
