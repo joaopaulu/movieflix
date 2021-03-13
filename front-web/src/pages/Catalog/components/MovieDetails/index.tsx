@@ -6,9 +6,7 @@ import MovieDescriptionLoader from '../Loaders/MovieDescriptionLoader';
 import MovieInfoLoader from '../Loaders/MovieInfoLoader';
 import './styles.scss';
 import { makePrivateRequest } from 'core/utils/request';
-import { EditorState } from 'draft-js';
-import { stateFromHTML } from 'draft-js-import-html';
-import { Editor } from 'react-draft-wysiwyg';
+import MovieDetailsReviews from '../MovieDetailsReviews';
 
 type ParamsType = {
   movieId: string;
@@ -18,8 +16,6 @@ const MovieDetails = () => {
   const { movieId } = useParams<ParamsType>();
   const [movie, setMovie] = useState<Movie>();
   const [isLoading, setIsLoading] = useState(false);
-  const contentState = stateFromHTML(movie?.synopsis || '');
-  const descriptionAsEditorState = EditorState.createWithContent(contentState);
 
   useEffect(() => {
     setIsLoading(true);
@@ -29,39 +25,44 @@ const MovieDetails = () => {
   }, [movieId]);
 
   return (
-    <div className="movie-details-container">
-      <Link to="/movies" className="movie-details-goback">
-        <ArrowIcon className="icon-goback" />
-        <h1 className="text-goback">voltar</h1>
-      </Link>
-      <div className="movie-details-info">
-        {isLoading ? (
-          <MovieInfoLoader />
-        ) : (
-          <>
-            <div className="movie-details-card">
-              <img
-                className="movie-details-image"
-                src={movie?.imgUrl}
-                alt={movie?.title}
-              />
-            </div>
-          </>
-        )}
-        <div className="movie-info-fields">
+    <>
+      <div className="movie-details-container">
+        <Link to="/movies" className="movie-details-goback">
+          <ArrowIcon className="icon-goback" />
+          <h1 className="text-goback">voltar</h1>
+        </Link>
+        <div className="movie-details-info">
           {isLoading ? (
-            <MovieDescriptionLoader />
+            <MovieInfoLoader />
           ) : (
             <>
-              <h1 className="movie-details-name">{movie?.title}</h1>
-              <h4 className="movie-details-year">{movie?.year}</h4>
-              <h6 className="movie-details-subtitle">{movie?.subTitle}</h6>
-              <span className="movie-details-subtitle">{movie?.synopsis}</span>
+              <div className="movie-details-card">
+                <img
+                  className="movie-details-image"
+                  src={movie?.imgUrl}
+                  alt={movie?.title}
+                />
+              </div>
             </>
           )}
+          <div className="movie-info-fields">
+            {isLoading ? (
+              <MovieDescriptionLoader />
+            ) : (
+              <>
+                <h1 className="movie-details-name">{movie?.title}</h1>
+                <h4 className="movie-details-year">{movie?.year}</h4>
+                <h6 className="movie-details-subtitle">{movie?.subTitle}</h6>
+                <div className="movie-details-sinopse">
+                  <span>{movie?.synopsis}</span>
+                </div>
+              </>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+      <MovieDetailsReviews />
+    </>
   );
 };
 
