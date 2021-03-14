@@ -1,47 +1,52 @@
-import { useEffect, useState, useCallback } from 'react';
-
-import { Reviews, ReviewsResponse } from 'core/types/Review';
 import { makePrivateRequest } from 'core/utils/request';
-import { useHistory } from 'react-router';
+import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import './styles.scss';
-import MovieDetailsComment from '../MovieDetailsComment';
 
-const MovieDetailsReviews = () => {
-  const [reviewsResponse, setReviewsResponse] = useState<ReviewsResponse>();
-  //const history = useHistory();
+type ParamsType = {
+  id: string;
+};
 
-  const getReviews = useCallback(() => {
-    const params = {
-      linesPerPage: 10,
-      direction: 'ASC',
-    };
-    makePrivateRequest({ url: '/reviews', params }).then(response =>
-      setReviewsResponse(response.data),
-    );
-  }, []);
+type FormState = {
+  text?: string;
+  movieId: number;
+};
 
-  useEffect(() => {
-    getReviews();
-  }, [getReviews]);
+const MovieDetailsReviews = ({ id }: ParamsType) => {
+  const { register, errors, handleSubmit } = useForm<FormState>();
+  const history = useHistory();
 
+  const onSubmit = (data: FormState) => {
+    data.movieId = parseInt(id);
+    makePrivateRequest({ url: `/reviews`, method: 'POST', data })
+      .then(response => {
+        toast.info('Obrigado pela sua Avaliação!');
+        history.go(0);
+      })
+      .catch(() => {
+        toast.error('Houve um erro na validação de seu comentário.');
+      });
+  };
   return (
     <>
       <div className="container-form-create-reaviews">
-        <form action="">
+        <form onSubmit={handleSubmit(onSubmit)} className="comment-container">
+          {errors.text && (
+            <div className="comment-alert">
+              Preencha o campo de sua avaliação!
+            </div>
+          )}
           <textarea
-            name="text-review"
+            name="text"
             placeholder="Deixe sua avaliação aqui"
             className="input-review"
+            cols={2}
+            rows={10}
+            ref={register({ required: 'A Avaliação deve ser preenchida' })}
           ></textarea>
           <button className="btn-save-review">SALVAR AVALIAÇÃO</button>
         </form>
-      </div>
-      <div className="container-form-list-reaviews">
-        <div className="description-review">
-          {reviewsResponse?.content.map(review => (
-            <MovieDetailsComment review={review} key={review.id} />
-          ))}
-        </div>
       </div>
     </>
   );

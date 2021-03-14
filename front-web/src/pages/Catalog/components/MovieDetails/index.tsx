@@ -6,6 +6,7 @@ import MovieDescriptionLoader from '../Loaders/MovieDescriptionLoader';
 import MovieInfoLoader from '../Loaders/MovieInfoLoader';
 import './styles.scss';
 import { makePrivateRequest } from 'core/utils/request';
+import { isAllowedByRole } from 'core/utils/auth';
 import MovieDetailsReviews from '../MovieDetailsReviews';
 
 type ParamsType = {
@@ -61,7 +62,12 @@ const MovieDetails = () => {
           </div>
         </div>
       </div>
-      <MovieDetailsReviews />
+
+      {isLoading ? (
+        <MovieDescriptionLoader />
+      ) : (
+        isAllowedByRole(['ROLE_MEMBER']) && <MovieDetailsReviews id={movieId} />
+      )}
     </>
   );
 };
