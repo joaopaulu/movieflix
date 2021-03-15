@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ReactComponent as ArrowIcon } from 'core/assets/images/arrow.svg';
 import { Movie } from 'core/types/Movie';
-import MovieDescriptionLoader from '../Loaders/MovieDescriptionLoader';
-import MovieInfoLoader from '../Loaders/MovieInfoLoader';
-import './styles.scss';
 import { makePrivateRequest } from 'core/utils/request';
 import { isAllowedByRole } from 'core/utils/auth';
+import MovieDescriptionLoader from '../Loaders/MovieDescriptionLoader';
+import MovieInfoLoader from '../Loaders/MovieInfoLoader';
 import MovieDetailsReviews from '../MovieDetailsReviews';
+import MovieDetailsComment from '../MovieDetailsComment';
+import './styles.scss';
 
 type ParamsType = {
   movieId: string;
@@ -68,6 +69,14 @@ const MovieDetails = () => {
       ) : (
         isAllowedByRole(['ROLE_MEMBER']) && <MovieDetailsReviews id={movieId} />
       )}
+
+      {movie?.reviews.map(review => (
+        <MovieDetailsComment
+          key={review.id}
+          commentReview={review.text}
+          autorReview={review.user.name}
+        />
+      ))}
     </>
   );
 };

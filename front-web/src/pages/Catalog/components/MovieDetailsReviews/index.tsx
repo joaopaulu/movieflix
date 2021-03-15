@@ -34,7 +34,7 @@ const MovieDetailsReviews = ({ id }: ParamsType) => {
         <form onSubmit={handleSubmit(onSubmit)} className="comment-container">
           {errors.text && (
             <div className="comment-alert">
-              Preencha o campo de sua avaliação!
+              A Avaliação deve ser preenchida!
             </div>
           )}
           <textarea
