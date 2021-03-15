@@ -1,6 +1,7 @@
 .catalog-container {
-  margin-top: 50px;
-  padding: 0 100px 50px 100px;
+  margin: 50px auto;
+  width: 67%;
+
 }
 
 .filter-container{
@@ -38,8 +39,15 @@
   margin-top: 43px;
   display: grid;
   grid-template-columns: repeat(auto-fill, 250px);
-  grid-gap: 33px 20px;
+  grid-gap: 33px 27px;
   justify-content: space-between;
+}
+
+@media(max-width: 2000px){
+  .catalog-container {
+    margin: 50px auto;
+    width: 75%;  
+  }
 }
 
 @media(max-width: 768px){
