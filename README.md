@@ -6,6 +6,9 @@ Movieflix é uma aplicação full stack web, Spring Boot com React, construída 
 
 A aplicação consiste em um catálogo de filmes que podem ser filtrados por gêneros, os membros podem fazer comentários sobre os filmes
 
+Usuário:bob@gmail.com
+Senha:123456
+
 
 ## Layout web
 ![movieflix](https://user-images.githubusercontent.com/66692428/111205344-e7ccf880-85a5-11eb-91d8-e5e50e72a725.gif)
