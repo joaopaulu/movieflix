@@ -23,7 +23,7 @@ alter table user_role add constraint FK7vn3h53d0tqdimm8cp45gc0kl foreign key (us
 
 INSERT INTO users (name, email, password) VALUES ('Bob', 'bob@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 INSERT INTO users (name, email, password) VALUES ('Ana', 'ana@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
-INSERT INTO users (name, email, password) VALUES ('João Paulo', 'jptick@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+INSERT INTO users (name, email, password) VALUES ('JP', 'jptick@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 
 INSERT INTO role (authority) VALUES ('ROLE_VISITOR');
 INSERT INTO role (authority) VALUES ('ROLE_MEMBER');
