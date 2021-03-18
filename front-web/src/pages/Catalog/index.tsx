@@ -1,7 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MoviesResponse } from 'core/types/Movies';
-import { Genres } from 'core/types/Genres';
+import { MoviesResponse, Genre } from 'core/types/Movie';
 import { makePrivateRequest } from 'core/utils/request';
 import MovieCard from './components/MovieCard';
 import MovieCardLoader from './components/Loaders/MovieCardLoader';
@@ -13,13 +12,15 @@ const Catalog = () => {
   const [moviesResponse, setMoviesResponse] = useState<MoviesResponse>();
   const [isLoading, setIsLoading] = useState(false);
   const [activePage, setActivePage] = useState(0);
-  const [genre, setGenre] = useState<Genres>();
+  const [genre, setGenre] = useState<Genre>();
 
   const getMovies = useCallback(() => {
     const params = {
       page: activePage,
-      linesPerPage: 12,
-      GenreId: genre?.id,
+      linesPerPage: 10,
+      direction: 'ASC',
+      orderBy: 'title',
+      genreId: genre?.id,
     };
     setIsLoading(true);
     makePrivateRequest({ url: '/movies', params })
@@ -31,25 +32,15 @@ const Catalog = () => {
     getMovies();
   }, [getMovies]);
 
-  const handleChangeGenre = (genre: Genres) => {
+  const handleChangeGenre = (genre: Genre) => {
     setActivePage(0);
     setGenre(genre);
-  };
-
-  const clearFilters = () => {
-    setActivePage(0);
-    setGenre(undefined);
   };
 
   return (
     <div className="catalog-container">
       <div className="filter-container">
-        <h1 className="catalog-title">Catálogo de produtos</h1>
-        <MovieFilters
-          genre={genre}
-          handleChangeGenres={handleChangeGenre}
-          clearFilters={clearFilters}
-        />
+        <MovieFilters genre={genre} handleChangeGenre={handleChangeGenre} />
       </div>
       <div className="catalog-movies">
         {isLoading ? (

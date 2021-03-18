@@ -1,9 +1,9 @@
 export type GenresResponse = {
-  content: Genres[];
+  content: Genre[];
   totalPages: number;
 };
 
-export type Genres = {
+export type Genre = {
   id: number;
   name: string;
 };

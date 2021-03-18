@@ -15,21 +15,23 @@ const Pagination = ({ totalPages, onChange }: Props) => {
 
   return (
     <div className="pagination-container">
-      <ReactPaginate
-        pageCount={totalPages}
-        pageRangeDisplayed={5}
-        marginPagesDisplayed={1}
-        onPageChange={selectedItem => onChange(selectedItem.selected)}
-        previousLabel={renderIcon('previous')}
-        nextLabel={renderIcon('next')}
-        containerClassName="pagination"
-        pageLinkClassName="pagination-item"
-        breakClassName="pagination-item"
-        activeLinkClassName="active"
-        previousClassName="page-active"
-        nextClassName="page-active"
-        disabledClassName="page-inactive"
-      />
+      {totalPages > 1 && (
+        <ReactPaginate
+          pageCount={totalPages}
+          pageRangeDisplayed={5}
+          marginPagesDisplayed={1}
+          onPageChange={selectedItem => onChange(selectedItem.selected)}
+          previousLabel={renderIcon('previous')}
+          nextLabel={renderIcon('next')}
+          containerClassName="pagination"
+          pageLinkClassName="pagination-item"
+          breakClassName="pagination-item"
+          activeLinkClassName="active"
+          previousClassName="page-active"
+          nextClassName="page-active"
+          disabledClassName="page-inactive"
+        />
+      )}
     </div>
   );
 };

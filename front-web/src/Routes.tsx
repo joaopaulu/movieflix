@@ -3,6 +3,7 @@ import Navbar from './core/components/Navbar';
 import Auth from './pages/Auth';
 import history from './core/utils/history';
 import Catalog from 'pages/Catalog';
+import MovieDetails from 'pages/Catalog/components/MovieDetails';
 
 const Routes = () => (
   <Router history={history}>
@@ -14,6 +15,9 @@ const Routes = () => (
       </Route>
       <Route path="/movies" exact>
         <Catalog />
+      </Route>
+      <Route path="/movies/:movieId">
+        <MovieDetails />
       </Route>
     </Switch>
   </Router>

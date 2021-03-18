@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { isAllowesByRole, isAuthenticated, Role } from 'core/utils/auth';
+import { isAllowedByRole, isAuthenticated, Role } from 'core/utils/auth';
 
 type Props = {
   children: React.ReactNode;
@@ -22,7 +22,7 @@ const PrivateRoute = ({ children, path, allowedRoutes }: Props) => {
               }}
             />
           );
-        } else if (isAuthenticated() && !isAllowesByRole(allowedRoutes)) {
+        } else if (isAuthenticated() && !isAllowedByRole(allowedRoutes)) {
           return <Redirect to={{ pathname: '/movies' }} />;
         }
         return children;
