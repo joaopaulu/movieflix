@@ -44,6 +44,29 @@ const text = StyleSheet.create({
     color: colors.black,
     marginLeft: 60,
   },
+  //Text Login
+  titleLogin: {
+    marginTop: 100,
+    fontWeight: 'normal',
+    fontSize: 30,
+    textAlign: 'center',
+    color: colors.white,
+  },
+  titleButtonLogin: {
+    textTransform: 'uppercase',
+    fontWeight: '700',
+    fontSize: 20,
+    color: colors.black,
+    marginLeft: 100,
+  },
+  //Button exit
+  btnExit: {
+    textTransform: 'uppercase',
+    fontWeight: '700',
+    fontSize: 14,
+    color: colors.black,
+    textAlign: 'center',
+  },
 });
 
 const theme = StyleSheet.create({
@@ -59,7 +82,6 @@ const theme = StyleSheet.create({
   },
   draw: {
     width: 340,
-    //height:10,
     height: 250,
     marginTop: 80,
     marginLeft: 40,
@@ -89,6 +111,83 @@ const theme = StyleSheet.create({
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
   },
+  //Login
+  loginCard: {
+    width: deviceWidth,
+    height: deviceWidth,
+    backgroundColor: colors.darkGrey,
+    justifyContent: 'space-around',
+    display: 'flex',
+  },
+  loginButton: {
+    width: 340,
+    height: 50,
+    marginTop: 80,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.orange,
+    borderRadius: 10,
+    justifyContent: 'space-between',
+    marginLeft: 35,
+  },
+  contenInput: {
+    marginTop: 50,
+  },
+  textInput: {
+    width: 340,
+    height: 50,
+    backgroundColor: colors.white,
+    borderRadius: 10,
+    marginTop: 30,
+    marginLeft: 35,
+    borderWidth: 1,
+    paddingLeft: 20,
+    borderColor: colors.ice,
+  },
+  inputPassowrd: {
+    flexDirection: 'row',
+    marginTop: 32,
+    alignContent: 'center',
+  },
+  toogle: {
+    width: 80,
+    height: 30,
+    justifyContent: 'center',
+    marginTop: 40,
+    paddingRight: 20,
+    marginLeft: -50,
+  },
+  eyes: {},
+
+  setaLogin: {
+    height: 50,
+    width: 50,
+    backgroundColor: colors.darkOrange,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 10,
+  },
 });
 
-export { colors, theme, text };
+const nav = StyleSheet.create({
+  textTitle: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: colors.black,
+    lineHeight: 25,
+    marginLeft: 50,
+  },
+  btnExit: {
+    width: 75,
+    height: 30,
+    marginRight: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: colors.black,
+    borderRadius: 10,
+  },
+});
+
+export { colors, theme, text, nav };
