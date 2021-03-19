@@ -67,6 +67,52 @@ const text = StyleSheet.create({
     color: colors.black,
     textAlign: 'center',
   },
+  //CatalogMovie
+  catalog_title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    lineHeight: 25,
+    color: colors.white,
+    marginTop: 20,
+    marginLeft: 15,
+  },
+  catalog_year: {
+    fontSize: 14,
+    fontWeight: '700',
+    lineHeight: 19,
+    color: colors.orange,
+    marginTop: 5,
+    marginLeft: 15,
+  },
+  catalog_subTitle: {
+    fontSize: 16,
+    fontWeight: '400',
+    lineHeight: 22,
+    color: colors.grey,
+    marginTop: 5,
+    marginLeft: 15,
+  },
+  text_catalog_btn: {
+    textTransform: 'uppercase',
+    color: colors.white,
+    fontSize: 14,
+    fontWeight: '700',
+    textAlign: 'center',
+  },
+  select: {
+    color: colors.whiteIce,
+    fontSize: 16,
+    fontWeight: '400',
+    marginTop: 10,
+    marginLeft: 16,
+    lineHeight: 26,
+    width: 300,
+    height: 20,
+  },
+  modal: {
+    color: colors.black,
+    fontSize: 16,
+  },
 });
 
 const theme = StyleSheet.create({
@@ -190,4 +236,88 @@ const nav = StyleSheet.create({
   },
 });
 
-export { colors, theme, text, nav };
+const catalog = StyleSheet.create({
+  contentSelect: {
+    height: 85,
+    width: 374,
+    backgroundColor: colors.lightGray,
+    borderRadius: 10,
+    marginLeft: 20,
+    marginTop: 20,
+  },
+  contentMovie: {
+    width: 374,
+    height: 410,
+    backgroundColor: colors.lightGray,
+    borderRadius: 10,
+    marginLeft: 20,
+    marginTop: 20,
+  },
+  movie: {
+    width: 374,
+    height: 228,
+    marginTop: 20,
+  },
+  form_btn: {
+    width: 344,
+    height: 40,
+    borderWidth: 1,
+    borderColor: colors.white,
+    borderRadius: 10,
+    marginLeft: 15,
+    marginTop: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  cardSelect: {
+    width: 330,
+    height: 50,
+    borderWidth: 1,
+    borderColor: colors.white,
+    borderRadius: 10,
+    marginLeft: 20,
+    marginTop: 15,
+    flexDirection: 'row',
+  },
+  seta: {
+    alignItems: 'flex-end',
+    marginHorizontal: -20,
+    marginTop: 18,
+  },
+  containerModal: {
+    width: deviceWidth,
+    height: deviceHeight,
+    backgroundColor: '#00000033',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  contentModal: {
+    marginTop: '5%',
+    width: 300,
+    backgroundColor: colors.white,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 15,
+    paddingVertical: 20,
+  },
+  itemModal: {
+    marginVertical: 5,
+    width: 200,
+    padding: 20,
+    height: 30,
+    borderRadius: 10,
+    backgroundColor: colors.veryLightGrey,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
+const loader = StyleSheet.create({
+  horizontal: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: 100,
+  },
+});
+
+export { colors, theme, text, nav, catalog, loader };
