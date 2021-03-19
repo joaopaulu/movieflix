@@ -113,6 +113,79 @@ const text = StyleSheet.create({
     color: colors.black,
     fontSize: 16,
   },
+  //DetailsMovie
+  titleDetails: {
+    color: colors.white,
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginTop: 20,
+    marginLeft: 25,
+    lineHeight: 33,
+  },
+
+  yearDetails: {
+    color: colors.orange,
+    fontSize: 24,
+    fontWeight: '700',
+    marginTop: 15,
+    marginLeft: 25,
+    lineHeight: 33,
+  },
+  descriptionDetails: {
+    color: colors.cinza,
+    fontSize: 18,
+    fontWeight: 'normal',
+    marginTop: 5,
+    marginLeft: 25,
+    lineHeight: 33,
+  },
+  titleSinopseDetails: {
+    color: colors.white,
+    fontSize: 22,
+    fontWeight: 'bold',
+    marginTop: 15,
+    marginLeft: 25,
+    lineHeight: 30,
+  },
+  sinopse: {
+    color: colors.white,
+    fontSize: 16,
+    fontWeight: 'normal',
+    marginTop: 13,
+    marginLeft: 19,
+    lineHeight: 22,
+  },
+  btnAvaliation: {
+    color: colors.black,
+    fontSize: 16,
+    fontWeight: '700',
+    textTransform: 'uppercase',
+    lineHeight: 22,
+  },
+  titleComment: {
+    marginTop: 12,
+    marginLeft: 30,
+    color: colors.white,
+    fontSize: 22,
+    fontWeight: 'bold',
+    lineHeight: 30,
+  },
+  nameComment: {
+    marginTop: 15,
+    marginLeft: 20,
+    color: colors.white,
+    fontSize: 16,
+    fontWeight: 'bold',
+    lineHeight: 30,
+  },
+  comment: {
+    marginTop: 13,
+    marginLeft: 20,
+    color: colors.cinza,
+    fontSize: 16,
+    fontWeight: 'normal',
+    lineHeight: 22,
+  },
 });
 
 const theme = StyleSheet.create({
@@ -312,6 +385,89 @@ const catalog = StyleSheet.create({
   },
 });
 
+const detailsMovie = StyleSheet.create({
+  contentMovie: {
+    width: 380,
+    height: 760,
+    marginTop: 20,
+    marginLeft: 17,
+    backgroundColor: colors.lightGray,
+    borderRadius: 20,
+    paddingBottom: 20,
+  },
+  image: {
+    width: 380,
+    height: 220,
+    marginTop: 15,
+  },
+  sinopse: {
+    width: 335,
+    height: 314,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: colors.white,
+    marginTop: 10,
+    marginLeft: 20,
+  },
+  contentAvaliation: {
+    width: 374,
+    height: 210,
+    borderRadius: 20,
+    backgroundColor: colors.lightGray,
+    marginTop: 18,
+    marginLeft: 17,
+  },
+  avaliation: {
+    width: 335,
+    paddingBottom: 80,
+    borderRadius: 20,
+    backgroundColor: colors.white,
+    marginTop: 15,
+    paddingTop: 10,
+    marginLeft: 20,
+    paddingLeft: 20,
+  },
+  btnAvaliation: {
+    width: 335,
+    height: 50,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.orange,
+    borderRadius: 10,
+    marginTop: 13,
+    marginLeft: 20,
+    justifyContent: 'center',
+  },
+  contentComment: {
+    width: 380,
+    height: 300,
+    marginTop: 20,
+    marginLeft: 17,
+    backgroundColor: colors.lightGray,
+    borderRadius: 20,
+    paddingBottom: 20,
+  },
+  contentName: {
+    flexDirection: 'row',
+  },
+  star: {
+    width: 15,
+    height: 15,
+    marginLeft: 40,
+    marginTop: 22,
+  },
+  inputComment: {
+    width: 334,
+    height: 70,
+    marginLeft: 25,
+    marginTop: 5,
+    borderWidth: 1,
+    borderColor: colors.white,
+    borderRadius: 10,
+    marginBottom: 10,
+  },
+});
+
 const loader = StyleSheet.create({
   horizontal: {
     flexDirection: 'row',
@@ -320,4 +476,4 @@ const loader = StyleSheet.create({
   },
 });
 
-export { colors, theme, text, nav, catalog, loader };
+export { colors, theme, text, nav, catalog, detailsMovie, loader };
