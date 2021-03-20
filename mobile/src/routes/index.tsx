@@ -1,9 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Home, Login, BtnNavbar, CatalogMovie, DetailsMovie } from '../pages';
-import { colors, nav } from '../styles';
-import { Text, View, Image } from 'react-native';
-import { useNavigation } from '@react-navigation/core';
+import { colors } from '../styles';
 
 import HeaderText from '../components/HeaderText';
 

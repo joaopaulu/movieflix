@@ -1,14 +1,18 @@
 import React from 'react';
-import { colors, nav } from '../styles';
-import { Text, View, Image } from 'react-native';
+import { nav } from '../styles';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
 import back from '../assets/back.png';
 
 const HeaderText: React.FC = () => {
+  const navigation = useNavigation();
   return (
     <>
       <View style={nav.iconBackContainer}>
-        <Image style={nav.iconBack} source={back} />
-        <HeaderText />
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Image style={nav.iconBack} source={back} />
+        </TouchableOpacity>
+        <Text style={nav.textTitle}>MovieFlix</Text>
       </View>
     </>
   );
