@@ -294,8 +294,17 @@ const nav = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     color: colors.black,
-    lineHeight: 25,
-    marginLeft: 50,
+    lineHeight: 20,
+    marginLeft: 13,
+  },
+  iconBackContainer: {
+    paddingLeft: 14,
+    flexDirection: 'row',
+  },
+
+  iconBack: {
+    width: 18,
+    height: 18,
   },
   btnExit: {
     width: 75,

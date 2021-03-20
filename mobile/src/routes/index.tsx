@@ -2,11 +2,12 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Home, Login, BtnNavbar, CatalogMovie, DetailsMovie } from '../pages';
 import { colors, nav } from '../styles';
-import { Text } from 'react-native';
+import { Text, View, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
+
+import HeaderText from '../components/HeaderText';
 
 const Stack = createStackNavigator();
-
-const HeaderText: React.FC = () => <Text style={nav.textTitle}>MovieFlix</Text>;
 
 const Routes: React.FC = () => {
   return (
