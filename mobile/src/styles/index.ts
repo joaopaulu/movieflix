@@ -265,7 +265,6 @@ const theme = StyleSheet.create({
   },
   inputPassowrd: {
     flexDirection: 'row',
-    marginTop: 32,
     alignContent: 'center',
   },
   toogle: {

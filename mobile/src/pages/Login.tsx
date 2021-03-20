@@ -23,6 +23,10 @@ const Login: React.FC = () => {
     navigate.navigate('CatalogMovie');
   }
 
+  function toogle() {
+    console.warn('Toogle');
+  }
+
   return (
     <View style={theme.container}>
       <View style={theme.card}>
@@ -54,7 +58,7 @@ const Login: React.FC = () => {
               }}
             />
             <TouchableOpacity
-              onPress={() => setHidePassword(!hidePassowrd)}
+              onPress={() => console.log('Toogle')}
               style={theme.toogle}
             >
               <Image
