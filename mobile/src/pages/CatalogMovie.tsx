@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import { theme, text, catalog, loader } from '../styles';
 import { ScrollView } from 'react-native-gesture-handler';
-import { useNavigation } from '@react-navigation/native';
 import { getGenres, getMovies } from '../services';
 import { MovieCard } from '../components';
 
@@ -20,7 +19,7 @@ type FilterForm = {
 };
 
 type Props = {
-  onSearch: (filter: FilterForm) => void;
+  handleChangeGenre: (filter: FilterForm) => void;
 };
 
 const CatalogMovie: React.FC = () => {
@@ -42,8 +41,6 @@ const CatalogMovie: React.FC = () => {
       name: null,
     },
   ]);
-
-  const navigation = useNavigation();
 
   async function fillMovies() {
     setLoading(true);
