@@ -9,7 +9,8 @@ import {
 } from 'react-native';
 import { theme, text, catalog, loader } from '../styles';
 import { ScrollView } from 'react-native-gesture-handler';
-import { getGenres, getMovies } from '../services';
+import { useNavigation } from '@react-navigation/native';
+import { getGenres, getMoviesByGenre, getMovies } from '../services';
 import { MovieCard } from '../components';
 
 import setaDown from '../assets/seta_baixo.png';
@@ -19,13 +20,14 @@ type FilterForm = {
 };
 
 type Props = {
-  handleChangeGenre: (filter: FilterForm) => void;
+  onSearch: (filter: FilterForm) => void;
 };
 
 const CatalogMovie: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [film, setFilms] = useState([]);
   const [showGenres, setShowGenres] = useState(false);
+  const [selectedGenre, setSelectedGenre] = useState(0);
   const [movie, setMovie] = useState({
     id: null,
     title: null,
@@ -44,7 +46,7 @@ const CatalogMovie: React.FC = () => {
 
   async function fillMovies() {
     setLoading(true);
-    const response = await getMovies();
+    const response = await getMoviesByGenre(selectedGenre);
     setFilms(response.data.content);
     setLoading(false);
   }
@@ -60,7 +62,7 @@ const CatalogMovie: React.FC = () => {
 
   useEffect(() => {
     fillMovies();
-  }, []);
+  }, [selectedGenre]);
 
   return (
     <View style={theme.container}>
@@ -81,6 +83,7 @@ const CatalogMovie: React.FC = () => {
                       onPress={() => {
                         setMovie({ ...movie, genre: gen.name });
                         setShowGenres(!showGenres);
+                        setSelectedGenre(gen.id);
                       }}
                       style={catalog.itemModal}
                     >
