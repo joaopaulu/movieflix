@@ -29,8 +29,14 @@ const DetailsMovie = ({
     synopsis: null,
     reviews: [
       {
+        id: null,
         text: null,
-        userName: null,
+        user: [
+          {
+            id: null,
+            name: null,
+          },
+        ],
       },
     ],
   });
@@ -41,7 +47,6 @@ const DetailsMovie = ({
   });
 
   async function loadMovieData() {
-    //setLoading(true);
     const res = await getMoviesById(id);
     setMovie(res.data);
     setLoading(false);
@@ -100,9 +105,9 @@ const DetailsMovie = ({
             <Text style={text.titleComment}>Avaliações</Text>
             {movie.reviews.map(review => (
               <>
-                <View style={detailsMovie.contentName} key={movie.id}>
+                <View style={detailsMovie.contentName} key={review.id}>
                   <Image style={detailsMovie.star} source={star} />
-                  <Text style={text.nameComment}>{review.userName}</Text>
+                  <Text style={text.nameComment}>{review.user.name}</Text>
                 </View>
                 <View style={detailsMovie.inputComment}>
                   <Text style={text.comment}>{review.text}</Text>
