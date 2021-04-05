@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, Text, View } from 'react-native';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import { text, theme } from '../styles';
@@ -10,7 +10,7 @@ import { useNavigation } from '@react-navigation/native';
 import { login } from '../services/auth';
 
 const Login: React.FC = () => {
-  const navigate = useNavigation();
+  const n = useNavigation();
   const [hidePassowrd, setHidePassword] = useState(true);
   const [userFetchData, setUserFetchData] = useState({});
   const [userInfo, setUserInfo] = useState({
@@ -20,11 +20,7 @@ const Login: React.FC = () => {
   async function handleLogin() {
     const data = await login(userInfo);
     setUserFetchData(data);
-    navigate.navigate('CatalogMovie');
-  }
-
-  function toogle() {
-    console.warn('Toogle');
+    n.navigate('CatalogMovie');
   }
 
   return (
@@ -58,7 +54,7 @@ const Login: React.FC = () => {
               }}
             />
             <TouchableOpacity
-              onPress={() => console.log('Toogle')}
+              onPress={() => setHidePassword(!hidePassowrd)}
               style={theme.toogle}
             >
               <Image

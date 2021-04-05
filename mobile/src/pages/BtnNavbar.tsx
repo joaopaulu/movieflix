@@ -21,6 +21,7 @@ const BtnNavbar: React.FC = () => {
   useEffect(() => {
     logged();
   }, []);
+
   function navigate(path: any) {
     if (path) {
       setShow(false);
