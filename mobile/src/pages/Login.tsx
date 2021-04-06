@@ -10,9 +10,9 @@ import { useNavigation } from '@react-navigation/native';
 import { login } from '../services/auth';
 
 const Login: React.FC = () => {
-  const n = useNavigation();
-  const [hidePassoword, setHidePassword] = useState(true);
-  const [userFetchData, setUserFetchData] = useState({});
+  const navigate = useNavigation();
+  const [passwordShow, setPasswordShow] = useState(false);
+  const [, setUserFetchData] = useState({});
   const [userInfo, setUserInfo] = useState({
     username: '',
     password: '',
@@ -20,18 +20,13 @@ const Login: React.FC = () => {
   async function handleLogin() {
     const data = await login(userInfo);
     setUserFetchData(data);
-    n.navigate('CatalogMovie');
+    navigate.navigate('CatalogMovie');
   }
 
-  function changeVisiblePass() {
-    if (hidePassoword) {
-      return setHidePassword(!hidePassoword);
-    }
-  }
-
-  useEffect(() => {
-    changeVisiblePass();
-  }, []);
+  const togglePasswordVisiblity = () => {
+    console.warn(passwordShow);
+    setPasswordShow(passwordShow ? false : true);
+  };
 
   return (
     <View style={theme.container}>
@@ -56,7 +51,7 @@ const Login: React.FC = () => {
               autoCapitalize="none"
               style={theme.textInput}
               value={userInfo.password}
-              secureTextEntry={hidePassoword}
+              secureTextEntry={passwordShow}
               onChangeText={e => {
                 const newUserInfo = { ...userInfo };
                 newUserInfo.password = e;
@@ -64,11 +59,11 @@ const Login: React.FC = () => {
               }}
             />
             <TouchableOpacity
-              onPress={() => changeVisiblePass()}
+              onPress={() => togglePasswordVisiblity()}
               style={theme.toogle}
             >
               <Image
-                source={hidePassoword ? eyesClosed : eyesOpened}
+                source={passwordShow ? eyesClosed : eyesOpened}
                 style={theme.eyes}
               />
             </TouchableOpacity>
