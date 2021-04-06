@@ -13,8 +13,11 @@ Usuário:bob@gmail.com
 Senha:123456
 
 
-## Layout web
+## Layout Web
 ![movieflix](https://user-images.githubusercontent.com/66692428/111205344-e7ccf880-85a5-11eb-91d8-e5e50e72a725.gif)
+
+## Layout Mobile
+https://user-images.githubusercontent.com/66692428/113786293-3b4ae600-970f-11eb-9fd5-7d5bb1c6c2cb.mp4
 
 # Tecnologias utilizadas
 ## Back end
@@ -26,6 +29,10 @@ Senha:123456
 ## Front end
 - HTML / CSS / JS / TypeScript
 - ReactJS
+
+## Mobile
+- React Native
+- Expo
 
 ## Implantação em produção
 - Back end: Heroku
