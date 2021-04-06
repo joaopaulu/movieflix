@@ -11,7 +11,7 @@ import { login } from '../services/auth';
 
 const Login: React.FC = () => {
   const n = useNavigation();
-  const [hidePassoword, setHidePassword] = useState(false);
+  const [hidePassoword, setHidePassword] = useState(true);
   const [userFetchData, setUserFetchData] = useState({});
   const [userInfo, setUserInfo] = useState({
     username: '',
@@ -22,6 +22,16 @@ const Login: React.FC = () => {
     setUserFetchData(data);
     n.navigate('CatalogMovie');
   }
+
+  function changeVisiblePass() {
+    if (hidePassoword) {
+      return setHidePassword(!hidePassoword);
+    }
+  }
+
+  useEffect(() => {
+    changeVisiblePass();
+  }, []);
 
   return (
     <View style={theme.container}>
@@ -54,11 +64,11 @@ const Login: React.FC = () => {
               }}
             />
             <TouchableOpacity
-              onPress={() => setHidePassword(!hidePassoword)}
+              onPress={() => changeVisiblePass()}
               style={theme.toogle}
             >
               <Image
-                source={hidePassoword ? eyesOpened : eyesClosed}
+                source={hidePassoword ? eyesClosed : eyesOpened}
                 style={theme.eyes}
               />
             </TouchableOpacity>
