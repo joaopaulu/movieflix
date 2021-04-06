@@ -247,33 +247,39 @@ const theme = StyleSheet.create({
     backgroundColor: colors.orange,
     borderRadius: 10,
     justifyContent: 'space-between',
-    marginLeft: 35,
   },
   contenInput: {
     marginTop: 50,
+    alignItems: 'center',
   },
-  textInput: {
+
+  passwordGroup: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 25,
     width: 340,
+    backgroundColor: colors.white,
+    borderRadius: 10,
+    height: 50,
+    borderWidth: 1,
+    borderColor: colors.ice,
+  },
+
+  textInput: {
+    width: 290,
     height: 50,
     backgroundColor: colors.white,
     borderRadius: 10,
-    marginTop: 30,
-    marginLeft: 35,
-    borderWidth: 1,
+
     paddingLeft: 20,
-    borderColor: colors.ice,
   },
-  inputPassowrd: {
-    flexDirection: 'row',
-    alignContent: 'center',
-  },
+
   toogle: {
-    width: 80,
+    width: 55,
     height: 30,
     justifyContent: 'center',
-    marginTop: 40,
+    marginTop: 0,
     paddingRight: 20,
-    marginLeft: -50,
   },
   eyes: {},
 

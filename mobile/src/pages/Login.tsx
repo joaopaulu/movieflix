@@ -28,25 +28,27 @@ const Login: React.FC = () => {
       <View style={theme.card}>
         <Text style={text.titleLogin}>LOGIN</Text>
         <View style={theme.contenInput}>
-          <TextInput
-            placeholder="Email"
-            autoCapitalize="none"
-            keyboardType="email-address"
-            style={theme.textInput}
-            value={userInfo.username}
-            onChangeText={e => {
-              const newUserInfo = { ...userInfo };
-              newUserInfo.username = e;
-              setUserInfo(newUserInfo);
-            }}
-          />
-          <View style={theme.inputPassowrd}>
+          <View style={theme.passwordGroup}>
+            <TextInput
+              placeholder="Email"
+              autoCapitalize="none"
+              keyboardType="email-address"
+              style={theme.textInput}
+              value={userInfo.username}
+              onChangeText={e => {
+                const newUserInfo = { ...userInfo };
+                newUserInfo.username = e;
+                setUserInfo(newUserInfo);
+              }}
+            />
+          </View>
+          <View style={theme.passwordGroup}>
             <TextInput
               placeholder="Senha"
               autoCapitalize="none"
               style={theme.textInput}
               value={userInfo.password}
-              secureTextEntry={hidePassord}
+              secureTextEntry={!hidePassord}
               onChangeText={e => {
                 const newUserInfo = { ...userInfo };
                 newUserInfo.password = e;
@@ -63,6 +65,7 @@ const Login: React.FC = () => {
               />
             </TouchableOpacity>
           </View>
+
           <TouchableOpacity
             style={theme.loginButton}
             activeOpacity={0.8}
