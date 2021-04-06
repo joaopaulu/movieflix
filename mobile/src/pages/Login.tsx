@@ -11,7 +11,7 @@ import { login } from '../services/auth';
 
 const Login: React.FC = () => {
   const n = useNavigation();
-  const [hidePassowrd, setHidePassword] = useState(true);
+  const [hidePassoword, setHidePassword] = useState(false);
   const [userFetchData, setUserFetchData] = useState({});
   const [userInfo, setUserInfo] = useState({
     username: '',
@@ -46,7 +46,7 @@ const Login: React.FC = () => {
               autoCapitalize="none"
               style={theme.textInput}
               value={userInfo.password}
-              secureTextEntry={hidePassowrd}
+              secureTextEntry={hidePassoword}
               onChangeText={e => {
                 const newUserInfo = { ...userInfo };
                 newUserInfo.password = e;
@@ -54,11 +54,11 @@ const Login: React.FC = () => {
               }}
             />
             <TouchableOpacity
-              onPress={() => setHidePassword(!hidePassowrd)}
+              onPress={() => setHidePassword(!hidePassoword)}
               style={theme.toogle}
             >
               <Image
-                source={hidePassowrd ? eyesOpened : eyesClosed}
+                source={hidePassoword ? eyesOpened : eyesClosed}
                 style={theme.eyes}
               />
             </TouchableOpacity>
